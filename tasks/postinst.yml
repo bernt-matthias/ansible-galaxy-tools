@@ -1,0 +1,10 @@
+---
+
+# fix for: https://github.com/galaxyproject/galaxy/issues/4767
+- name: fix symlinks in conda envs directory
+  shell: |
+    for env in "{{ galaxy_server_dir }}"/database/dependencies/_conda/envs/*; do
+      for link in conda activate deactivate; do
+         \[ -h $env/bin/$link \] || ln -s "{{ galaxy_server_dir }}"/database/dependencies/_conda/bin/$link $env/bin/$link;
+      done
+    done
