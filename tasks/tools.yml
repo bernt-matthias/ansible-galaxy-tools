@@ -5,7 +5,7 @@
   with_items:
     - ephemeris==0.4.0  # Pinned version should make sure ephemeris version matches what the role has been tested with
 
-- include: install_tool_list.yml
+- include_tasks: install_tool_list.yml
   with_items: '{{ galaxy_tools_tool_list_files }}'
   loop_control:
     loop_var: tool_list_file
