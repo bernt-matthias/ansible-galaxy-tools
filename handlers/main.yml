@@ -1,2 +1,3 @@
-- name: restart galaxy
-  import_tasks: restart_galaxy.yml
+- name: ansible-galaxy-tools restart galaxy
+  include_tasks: restart_galaxy.yml
+  when: galaxy_restart_handler_enabled|bool
